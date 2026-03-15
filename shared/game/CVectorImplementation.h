@@ -42,13 +42,13 @@ inline void CVector::Set(float value) {
 }
 
 inline void CVector::Set(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->fX = x;
+    this->fY = y;
+    this->fZ = z;
 }
 
 inline void CVector::operator =(const CVector& src) {
-    Set(src.x, src.y, src.z);
+    Set(src.fX, src.fY, src.fZ);
 }
 
 #ifdef RW
@@ -77,9 +77,9 @@ inline void CVector::FromLerp(const CVector& begin, const CVector& end, float pr
 
 inline void CVector::FromCross(const CVector& left, const CVector& right) {
     Set(
-        right.z * left.y - left.z * right.y,
-        left.z * right.x - left.x * right.z,
-        left.x * right.y - right.x * left.y
+        right.fZ * left.fY - left.fZ * right.fY,
+        left.fZ * right.fX - left.fX * right.fZ,
+        left.fX * right.fY - right.fX * left.fY
     );
 }
 
@@ -91,26 +91,26 @@ inline void CVector::FromCross(const CVector& left, const CVector& right) {
 
 #ifdef RW
 inline RwV3d CVector::ToRwV3d() const {
-    return RwV3d(x, y, z);
+    return RwV3d(fX, fY, fZ);
 }
 #endif
 
 inline CVector2D CVector::To2D() const {
-    return CVector2D(x, y);
+    return CVector2D(fX, fY);
 }
 
 // properties
 
 inline bool CVector::operator ==(const CVector& other) const {
-    return x == other.x && y == other.y && z == other.z;
+    return fX == other.fX && fY == other.fY && fZ == other.fZ;
 }
 
 inline bool CVector::operator !=(const CVector& other) const {
-    return x != other.x || y != other.y || z != other.z;
+    return fX != other.fX || fY != other.fY || fZ != other.fZ;
 }
 
 inline CVector CVector::operator -() const {
-    return CVector(-x, -y, -z);
+    return CVector(-fX, -fY, -fZ);
 }
 
 inline float CVector::Distance(const CVector& other) const {
@@ -134,7 +134,7 @@ inline CVector CVector::Cross(const CVector& other) const {
 }
 
 inline float CVector::Heading() const {
-    return atan2(-x, y);
+    return atan2(-fX, fY);
 }
 
 inline float CVector::Magnitude() const {
@@ -142,7 +142,7 @@ inline float CVector::Magnitude() const {
 }
 
 inline float CVector::MagnitudeSqr() const {
-    return x * x + y * y + z * z;
+    return fX * fX + fY * fY + fZ * fZ;
 }
 
 inline float CVector::Magnitude2D() const {
@@ -150,7 +150,7 @@ inline float CVector::Magnitude2D() const {
 }
 
 inline float CVector::MagnitudeSqr2D() const {
-    return x * x + y * y;
+    return fX * fX + fY * fY;
 }
 
 inline bool CVector::IsNormalized() const {
@@ -158,45 +158,45 @@ inline bool CVector::IsNormalized() const {
 }
 
 inline bool CVector::IsZero() const {
-    return x == 0.0f && y == 0.0f && z == 0.0f;
+    return fX == 0.0f && fY == 0.0f && fZ == 0.0f;
 }
 
 // modifiers
 
 inline void CVector::operator +=(float value) {
-    x += value;
-    y += value;
-    z += value;
+    fX += value;
+    fY += value;
+    fZ += value;
 }
 
 inline void CVector::operator +=(const CVector& other) {
-    x += other.x;
-    y += other.y;
-    z += other.z;
+    fX += other.fX;
+    fY += other.fY;
+    fZ += other.fZ;
 }
 
 inline void CVector::operator -=(float value) {
-    x -= value;
-    y -= value;
-    z -= value;
+    fX -= value;
+    fY -= value;
+    fZ -= value;
 }
 
 inline void CVector::operator -=(const CVector& other) {
-    x -= other.x;
-    y -= other.y;
-    z -= other.z;
+    fX -= other.fX;
+    fY -= other.fY;
+    fZ -= other.fZ;
 }
 
 inline void CVector::operator *=(float multiplier) {
-    x *= multiplier;
-    y *= multiplier;
-    z *= multiplier;
+    fX *= multiplier;
+    fY *= multiplier;
+    fZ *= multiplier;
 }
 
 inline void CVector::operator /=(float divisor) {
-    x /= divisor;
-    y /= divisor;
-    z /= divisor;
+    fX /= divisor;
+    fY /= divisor;
+    fZ /= divisor;
 }
 
 inline void CVector::Normalise() {
@@ -243,14 +243,14 @@ inline float CVector::Distance2D(const CVector& left, const CVector2D& right) {
 
 inline CVector CVector::Lerp(const CVector& begin, const CVector& end, float progress) {
     return CVector(
-        std::lerp(begin.x, end.x, progress),
-        std::lerp(begin.y, end.y, progress),
-        std::lerp(begin.z, end.z, progress)
+        std::lerp(begin.fX, end.fX, progress),
+        std::lerp(begin.fY, end.fY, progress),
+        std::lerp(begin.fZ, end.fZ, progress)
     );
 }
 
 inline float CVector::Dot(const CVector& left, const CVector& right) {
-    return left.z * right.z + left.y * right.y + left.x * right.x;
+    return left.fZ * right.fZ + left.fY * right.fY + left.fX * right.fX;
 }
 
 inline CVector CVector::Cross(const CVector& left, const CVector &right) {
@@ -315,9 +315,9 @@ inline CVector operator *(const CVector& vec, float value) {
 
 inline CVector operator /(float value, const CVector& vec) {
     auto result = CVector(value);
-    result.x /= vec.x;
-    result.y /= vec.y;
-    result.z /= vec.z;
+    result.fX /= vec.fX;
+    result.fY /= vec.fY;
+    result.fZ /= vec.fZ;
     return result;
 }
 

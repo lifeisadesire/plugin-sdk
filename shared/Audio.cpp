@@ -367,9 +367,9 @@ namespace plugin {
         auto forward = TheCamera.GetForward();
         auto up = TheCamera.GetUp();
 
-        listener.pos = { pos.x, pos.y, pos.z };
-        listener.forward = { forward.x, forward.y, forward.z };
-        listener.up = { up.x, up.y, up.z };
+        listener.pos = { pos.fX, pos.fY, pos.fZ };
+        listener.forward = { forward.fX, forward.fY, forward.fZ };
+        listener.up = { up.fX, up.fY, up.fZ };
 #endif
 
         for (auto& it : streams) {
@@ -454,7 +454,7 @@ namespace plugin {
                     SetChannel3DDistances(channel, 10.0f, 100.0f);
                     if (it->is3d) {
                         SetChannelReverbFlag(channel, it->reverb);
-                        SetChannel3DPosition(channel, it->pos.x, it->pos.y, it->pos.z);
+                        SetChannel3DPosition(channel, it->pos.fX, it->pos.fY, it->pos.fZ);
                     }
                     else {
                         SetChannel2DPositions(channel);

@@ -59,9 +59,9 @@ void CompressedVector::Set(CompressedVector2D const & rhs) {
 
 #ifdef RW
 void CompressedVector::Set(CVector const & rhs) {
-    x = static_cast<short>(rhs.x * 8.0f);
-    y = static_cast<short>(rhs.y * 8.0f);
-    z = static_cast<short>(rhs.z * 8.0f);
+    x = static_cast<short>(rhs.fX * 8.0f);
+    y = static_cast<short>(rhs.fY * 8.0f);
+    z = static_cast<short>(rhs.fZ * 8.0f);
 }
 
 void CompressedVector::Set(RwV3d const & rhs) {

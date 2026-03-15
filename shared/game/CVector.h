@@ -20,9 +20,9 @@ class CVector2D;
 class CVector
 {
 public:
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 0.0f;
+    float fX = 0.0f;
+    float fY = 0.0f;
+    float fZ = 0.0f;
 
     // constructors
     CVector() = default;

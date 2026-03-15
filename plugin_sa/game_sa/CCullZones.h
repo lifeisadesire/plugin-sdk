@@ -38,8 +38,8 @@ struct CZoneDef {
     short z2;
 
     void Init(const CVector& center, float _x1, float _y1, float _z1, float _x2, float _y2, float _z2) {
-        x1 = (short)(center.x - _x1 - _x2);
-        y1 = (short)(center.y - _y1 - _y2);
+        x1 = (short)(center.fX - _x1 - _x2);
+        y1 = (short)(center.fY - _y1 - _y2);
 
         x2 = (short)(_x1 + _x1);
         y2 = (short)(_y1 + _y1);

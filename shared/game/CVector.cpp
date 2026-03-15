@@ -19,9 +19,9 @@ void CVector::FromMultiply(CMatrix const& matrix, CVector const& point) {
 
 void CVector::FromMultiply3x3(const CMatrix& matrix, const CVector& vector) {
     Set(
-        matrix.right.x * vector.x + matrix.up.x * vector.y + matrix.at.x * vector.z,
-        matrix.right.y * vector.x + matrix.up.y * vector.y + matrix.at.y * vector.z,
-        matrix.right.z * vector.x + matrix.up.z * vector.y + matrix.at.z * vector.z
+        matrix.right.fX * vector.fX + matrix.up.fX * vector.fY + matrix.at.fX * vector.fZ,
+        matrix.right.fY * vector.fX + matrix.up.fY * vector.fY + matrix.at.fY * vector.fZ,
+        matrix.right.fZ * vector.fX + matrix.up.fZ * vector.fY + matrix.at.fZ * vector.fZ
     );
 }
 

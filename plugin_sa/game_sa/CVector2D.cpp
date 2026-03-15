@@ -24,12 +24,12 @@ CVector CVector2D::To3D(float zValue)
 
 void CVector2D::From3D(const CVector& vec3d) 
 {
-    x = vec3d.x;
-    y = vec3d.y;
+    x = vec3d.fX;
+    y = vec3d.fY;
 }
 
 CVector2D::CVector2D(const CVector& vec3d)
 {
-    x = vec3d.x;
-    y = vec3d.y;
+    x = vec3d.fX;
+    y = vec3d.fY;
 }

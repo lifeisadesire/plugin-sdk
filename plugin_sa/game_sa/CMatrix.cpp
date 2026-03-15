@@ -128,9 +128,9 @@ void CMatrix::SetRotate(float x, float y, float z)
 
 void CMatrix::Translate(float x, float y, float z)
 {
-	pos.x += x;
-	pos.y += y;
-	pos.z += z;
+	pos.fX += x;
+	pos.fY += y;
+	pos.fZ += z;
 }
 
 void CMatrix::RotateX(float angle)
